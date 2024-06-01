@@ -1,33 +1,49 @@
+/* общие стили */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+:root { /* Цвета */
+  --forms-background:white;
+  --inputs-background:#B4B4B4;
+  --buttons-background:black;
+  --shadow-color:rgb(0,0,0,0.5);
+  --validation-color:red;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html, body {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-user-drag:none;
+  user-select:none;
+  background:rgb(212, 212, 212);
+  font-weight:450;
+  font-size:1.1em;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.forms {  /* Формы */
+  padding:1.5rem 3.5rem;
+  width:28rem;
+  height:24rem;
+  background:var(--forms-background);
+  border-radius:25px;
+  box-shadow:1.5px 1.5px 4px var(--shadow-color);
+  text-transform:uppercase;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.validation{ /* Надписи валидации на формах */
+  font-weight:600;
+  font-size:.65em;
+  color:var(--validation-color); 
 }
+.inputs{  /* Поля ввода в формах */
+  padding:0 .5rem;
+  background:var(--inputs-background);
+  border-radius:12px;
+  font-size:.9em;
+  outline:none;
+  transition:.15s;
+}
+.inputs:hover{transform:scale(1.01);}
+.inputs:active{transform:scale(0.99);}
+.inputs:focus{box-shadow:1px 1px 4px var(--shadow-color);}

@@ -1,0 +1,12 @@
+form { margin:3rem auto; }
+.for-input{
+    height:21%;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+}
+.for-input span { margin-left:2%; }
+input {
+    width:100%;
+    height:70%;
+}
