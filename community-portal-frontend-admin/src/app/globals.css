@@ -3,9 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 :root { /* Цвета */
+  --body-background:rgb(212, 212, 212);
+  --image-border-color:rgb(177, 177, 177);
   --forms-background:white;
-  --inputs-background:#B4B4B4;
+  --inputs-background:#d9d9d9;
   --buttons-background:black;
+  --buttons-disabled-background:rgb(73, 73, 73);
   --shadow-color:rgb(0,0,0,0.5);
   --validation-color:red;
 }
@@ -15,20 +18,23 @@ html, body {
   box-sizing:border-box;
   -webkit-user-drag:none;
   user-select:none;
-  background:rgb(212, 212, 212);
+  background:var(--body-background);
+  text-transform:uppercase;
   font-weight:450;
   font-size:1.1em;
 }
+img {
+  border-radius:12px;
+  box-shadow:.5px .5px 3px var(--shadow-color);
+}
 .forms {  /* Формы */
-  padding:1.5rem 3.5rem;
-  width:28rem;
-  height:24rem;
+  padding:1.5rem 2rem;
+  height:auto;
   background:var(--forms-background);
   border-radius:25px;
   box-shadow:1.5px 1.5px 4px var(--shadow-color);
-  text-transform:uppercase;
   display:flex;
-  flex-direction:column;
+  justify-content:space-between;
   align-items:center;
 }
 .validation{ /* Надписи валидации на формах */
@@ -36,7 +42,11 @@ html, body {
   font-size:.65em;
   color:var(--validation-color); 
 }
-.inputs{  /* Поля ввода в формах */
+textarea {
+  resize:none;
+  font-size:.75em !important;
+}
+.inputs {  /* Поля ввода в формах */
   padding:0 .5rem;
   background:var(--inputs-background);
   border-radius:12px;
@@ -44,6 +54,19 @@ html, body {
   outline:none;
   transition:.15s;
 }
-.inputs:hover{transform:scale(1.01);}
-.inputs:active{transform:scale(0.99);}
-.inputs:focus{box-shadow:1px 1px 4px var(--shadow-color);}
+.inputs:hover{ transform:scale(1.01); }
+.inputs:active{ transform:scale(0.99); }
+.inputs:focus{ box-shadow:1px 1px 4px var(--shadow-color); }
+.buttons { /* Кнопки */
+  background:var(--buttons-background);
+  border-radius:12px;
+  color:var(--forms-background);
+  font-size:.9em;
+  outline:none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition:.15s;
+}
+.buttons:not(:disabled):hover { color:var(--body-background); }
+.buttons:not(:disabled):active{ transform:scale(0.98); }
+.buttons:disabled { background:var(--buttons-disabled-background); }
