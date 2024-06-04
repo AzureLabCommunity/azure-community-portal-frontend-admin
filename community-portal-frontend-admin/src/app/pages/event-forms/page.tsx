@@ -3,36 +3,36 @@ import { useState, useRef, useEffect, ChangeEvent } from 'react';
 import "./style.css";
 
 export default function EventForm() {
-  // Состояние для хранилища выбранного изображения (по умолчанию - изображение ошибки)
+  // Status for the selected image storage (default is error image)
   const [selectedImage, setSelectedImage] = useState<string>('/community-portal-frontend-admin/public/textures/invalid-image.svg');
   const [formData, setFormData] = useState({ 
     title: '',
     description: '',
     datetime: '',
     location: '',
-  }); // Состояние для хранения данных формы (объект с пустыми полями)
-  const isFormValid = useRef(false);  // Ссылка для управления состоянием кнопки "apply"
+  }); // State for storing form data (object with empty fields)
+  const isFormValid = useRef(false);  // Link to control the state of the "apply" button
 
   // Обработчик изменения изображения
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (file) setSelectedImage(URL.createObjectURL(file)); // Создаем URL для выбранного изображения
+    if (file) setSelectedImage(URL.createObjectURL(file)); // Create a URL for the selected image
   };
 
-  // Обработчик изменения любого поля формы
+  // Handler for changing any form field
   const handleInputChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = event.target;
-    setFormData({ // Обновляем состояние формы с новым значением для соответствующего поля
+    setFormData({ // We update the form state with a new value for the corresponding field
       ...formData,
       [name]: value,
     });
   };
 
-  // Эффект обновления состояния кнопки "apply" при изменении данных формы или выбранного изображения
+  // The effect of updating the state of the "apply" button when the form data or selected image changes
   useEffect(() => {
-    const allFieldsFilled = Object.values(formData).every(Boolean); // Проверяем заполнены ли все поля
-    const hasImage = selectedImage !== '/textures/invalid_images.svg'; // Проверяем выбрано ли изображение
-    isFormValid.current = allFieldsFilled && hasImage; // Обновляем состояние кнопки (активна, если все поля заполнены и изображение выбрано)
+    const allFieldsFilled = Object.values(formData).every(Boolean); // Checking if all fields are filled in
+    const hasImage = selectedImage !== '/textures/invalid_images.svg'; // Checking if the image is selected
+    isFormValid.current = allFieldsFilled && hasImage; // Update the button state (active if all fields are filled in and the image is selected)
   }, [formData, selectedImage]);
   
   return (
