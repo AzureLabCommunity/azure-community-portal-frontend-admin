@@ -23,10 +23,6 @@ html, body {
   font-weight:450;
   font-size:1.1em;
 }
-img {
-  border-radius:2px;
-  box-shadow:.5px .5px 3px var(--shadow-color);
-}
 .forms {  /* Формы */
   padding:2rem 2.5rem;
   height:auto;
@@ -40,6 +36,11 @@ img {
   font-weight:600;
   font-size:.65em;
   color:var(--validation-color); 
+}
+.image-container { /* Контейнер для изображения */
+  position: relative;
+  border-radius: 5px;
+  box-shadow: .5px .5px 2px var(--shadow-color);
 }
 textarea {
   resize:none;
